@@ -1,0 +1,33 @@
+{
+  "name": "WebControl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galziv/WebControl.git"
+  },
+  "keywords": [
+    "remote",
+    "control"
+  ],
+  "author": "Gal Ziv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/galziv/WebControl/issues"
+  },
+  "homepage": "https://github.com/galziv/WebControl",
+  "dependencies": {
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "robotjs": "^0.4.4",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {
+    "node-sass": "^3.8.0",
+    "nodemon": "^1.9.2"
+  }
+}
