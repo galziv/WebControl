@@ -1,4 +1,4 @@
-![Screenshot](webapp/img/chrome.png)
+![Screenshot](screenshot.png)
 
 # Web Control
 
