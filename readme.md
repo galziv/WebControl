@@ -25,3 +25,5 @@ configuration.json contains application configuration.
 * browserPath - Path to browser executable
 * logActions - print actions from client to console
 * logRequests - print url requests to console
+
+index.js contains options object at its first line. If showActions set to true, actions sent to server will be displayed at window's bottom left corner.
