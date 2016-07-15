@@ -29,18 +29,26 @@
                 <i class="fa fa-keyboard-o" onclick="keyboardClick(event)"></i>
             </div>
             <div class="pull-left fab-icon inline yellow small-right">
-                <i class="fa fa-arrows" ng-click="arrows=!arrows;app=false;media=false;"></i>
+                <i class="fa fa-arrows" ng-click="arrows=!arrows;"></i>
             </div>
-            <div class="pull-left fab-icon inline yellow" ng-click="media=!media;app=false;arrows=false;">
+            <div class="pull-left fab-icon inline yellow" ng-click="media=!media;">
                 <img src="img/remoteControl.png" alt="" class="img-icon" />
             </div>
             <div class="pull-left fab-icon inline yellow">
-                <img src="img/app.png" alt="" class="img-icon" ng-click="app=!app;media=false;arrows=false;"/>
+                <img src="img/app.png" alt="" class="img-icon" ng-click="app=!app;"/>
             </div>
             <div style="clear:both"></div>
         </div>
-        <div class="row">
-            <div class="background yellow" ng-class="{ open: media}">
+        <div class="row" id="panels">
+            <div class="background yellow no-display" ng-class="{ opened: arrows, closed: arrows === false}">
+                <i class="fa fa-arrow-left" onclick="keyPress(event, 'left');"></i>
+                <i class="fa fa-arrow-right" onclick="keyPress(event, 'right');"></i>
+                <i class="fa fa-arrow-up" onclick="keyPress(event, 'up');"></i>
+                <i class="fa fa-arrow-down" onclick="keyPress(event, 'down');"></i>
+                <img src="img/enter.png" alt="" class="img-icon text-top" onclick="keyPress(event, 'enter');" />
+                <i class="fa fa-undo" onclick="keyPress(event, 'backspace');"></i>
+            </div>
+            <div class="background yellow no-display" ng-class="{ opened: media, closed: media === false}">
                 <i class="fa fa-backward" onclick="sendMediaKey(event, 'audio_prev');"></i>
                 <i class="fa fa-stop" onclick="sendMediaKey(event, 'audio_stop');"></i>
                 <i class="fa fa-pause" onclick="sendMediaKey(event, 'audio_pause');"></i>
@@ -49,19 +57,12 @@
                 <i class="fa fa-volume-off" onclick="sendMediaKey(event, 'audio_mute');"></i>
                 <i class="fa fa-volume-down" ontouchstart="continuesMediaKey(event, 'audio_vol_down');" ontouchend="stopInterval();"></i>
                 <i class="fa fa-volume-up" ontouchstart="continuesMediaKey(event, 'audio_vol_up');" ontouchend="stopInterval();"></i>
+				<i class="fa fa-info" onclick="keyPress(event, 'i');"></i>
             </div>
-            <div class="background yellow" ng-class="{ open: app}">
+            <div class="background yellow no-display" ng-class="{ opened: app, closed: app === false}">
                 <img src="img/kodi.png" alt="" class="img-icon" onclick="emit(event, 'kodi');"/>
                 <img src="img/youtube.png" alt="" class="img-icon" onclick="emit(event, 'youtube');"/>
                 <img src="img/ynet.png" alt="" class="img-icon" onclick="emit(event, 'ynet');" />
-            </div>
-            <div class="background yellow" ng-class="{ open: arrows}">
-                <i class="fa fa-arrow-left" onclick="keyPress(event, 'left');"></i>
-                <i class="fa fa-arrow-right" onclick="keyPress(event, 'right');"></i>
-                <i class="fa fa-arrow-up" onclick="keyPress(event, 'up');"></i>
-                <i class="fa fa-arrow-down" onclick="keyPress(event, 'down');"></i>
-                <img src="img/enter.png" alt="" class="img-icon text-top" onclick="emit(event, 'enter');" />
-                <i class="fa fa-undo" onclick="keyPress(event, 'backspace');"></i>
             </div>
         </div>
         <footer>
