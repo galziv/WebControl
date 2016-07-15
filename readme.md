@@ -5,13 +5,14 @@
 Simple node.js based website to control your media center. Includes arrow keys, media controls, keyboard (device native keyboard), applications launching and mouse control.
 
 ### Installation
-Install node.js and npm is required. I've developed against node v4.4.7, npm v2.15.8. To check your installed version execute:
+node.js and npm is required. I've developed against node v4.4.7, npm v2.15.8. To check your installed version execute:
 
 <code>node -v</code>
 
 <code>npm -v</code>
 
-Download the zip, extract and then go to project directory get all dependencies using:
+Download the zip, extract and navigate to project's directory to get all dependencies using:
+
 <code>npm install</code>
 
 ### Execution
@@ -22,3 +23,7 @@ configuration.json contains application configuration.
 
 * port - Website's port
 * browserPath - Path to browser executable
+* logActions - print actions from client to console
+* logRequests - print url requests to console
+
+webapp/index.js has options object at line:1. set show actions to true to show actions at window's left bottom corner.

@@ -1,8 +1,17 @@
+var options = {
+    showActions: false
+};
 
-window.lastPoint = { x: null, y: null };
-window.socket = io.connect('/');
-window.isKeyboardOpen = false;
-window.keyboardInput = document.getElementById('keyboard-input');
+var lastPoint = { x: null, y: null };
+var socket = io.connect('/');
+var isKeyboardOpen = false;
+var keyboardInput = document.getElementById('keyboard-input');
+var x = document.getElementById('x');
+var y = document.getElementById('y');
+
+if (!options.showActions) {
+    y.style.display = x.style.display = 'none';
+}
 
 socket.on('connect', function () {
     console.log('connected');
@@ -12,12 +21,9 @@ socket.on('disconnect', function () {
     console.log('disconnect');
 });
 
-var x = document.getElementById('x');
-var y = document.getElementById('y');
-
 function touchend() {
-    window.lastPoint.x = 0;
-    window.lastPoint.y = 0;
+    lastPoint.x = 0;
+    lastPoint.y = 0;
 }
 
 function moveMouseDelta(e) {
@@ -31,7 +37,6 @@ function moveMouseDelta(e) {
 
         if (lastPoint.x && lastPoint.y) {
             socket.emit('mouseMove', { x: xDelta, y: yDelta });
-            console.log(xDelta, yDelta);
         }
 
         window.lastPoint.x = e.changedTouches[0].pageX;
@@ -95,7 +100,7 @@ function keyboardClick(e) {
 }
 
 function continuesMediaKey(e, key) {
-    window.interval = setInterval(function() {
+    window.interval = setInterval(function () {
         socket.emit('media', key);
     }, 70);
 }

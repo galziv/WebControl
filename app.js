@@ -6,7 +6,6 @@ const fs = require('fs');
 
 const configuration = JSON.parse(fs.readFileSync('configuration.json', 'utf8'));
 
-/* Configuration */
 const port = configuration.port;
 const browserPath = configuration.browserPath;
 
@@ -17,10 +16,7 @@ const keyboard = require('./keyboard');
 const rootPath = 'wepapp/';
 const imgPath = 'img/';
 
-
 const stripFileName = (path, fileDirectory) => {
-
-    console.log(path);
 
     var splitted = path.split('/');
     var filepath = rootPath + (fileDirectory || '') + splitted[splitted.length - 1]; // to prevent relative path
@@ -35,25 +31,47 @@ const launchApp = (command, args) => {
     spawn(command, args);
 };
 
+const logAction = (action) => {
+    
+    if (configuration.logActions) {
+        console.log(action);
+    }
+};
+
+const logRequests = (req) => {
+
+    if (configuration.logRequests) {
+        console.log(req);
+    }
+};
+
+const sendFileOptions = { root: __dirname + '/' };
+
+console.log(JSON.stringify(configuration) + '\n');
+
 app.get('/', function (req, res) {
-    console.log(req.path);
-    res.sendfile(rootPath + 'index.html');
+    logRequests(req.path);
+    res.sendFile(rootPath + 'index.html', sendFileOptions);
 });
 
-app.get('/node_modules/angular/angular.js', function(req, res) {
-    res.sendfile('node_modules/angular/angular.js');
+app.get('/node_modules/angular/angular.js', function (req, res) {
+    logRequests(req.path);
+    res.sendFile('node_modules/angular/angular.js', sendFileOptions);
 });
 
 app.get('/*.js', (req, res) => {
-    res.sendfile(stripFileName(req.path));
+    logRequests(req.path);
+    res.sendFile(stripFileName(req.path), sendFileOptions);
 });
 
 app.get('/*.css', function (req, res) {
-    res.sendfile(stripFileName(req.path));
+    logRequests(req.path);
+    res.sendFile(stripFileName(req.path), sendFileOptions);
 });
 
 app.get('/img/*.png', function (req, res) {
-    res.sendfile(stripFileName(req.path, imgPath));
+    logRequests(req.path);
+    res.sendFile(stripFileName(req.path, imgPath), sendFileOptions);
 });
 
 io.on('connection', (socket) => {
@@ -61,35 +79,55 @@ io.on('connection', (socket) => {
     console.log('client connected');
 
     socket.on('mouseMove', (point) => {
-        console.log(point);
+        logAction(point);
         mouse.moveBy(point.x, point.y);
     });
 
     socket.on('media', (key) => {
-        console.log(key);
+        logAction(key);
         media[key]();
     });
 
     socket.on('keyPress', (key) => {
+        logAction('keyPress');
         keyboard.keyPress(key);
     });
 
-    socket.on('changeLanguageWindows', keyboard.changeLanguageWindows);
+    socket.on('changeLanguageWindows', () => {
 
-    socket.on('mouseClick', mouse.click);
-    socket.on('mouseDoubleClick', mouse.doubleClick);
-    socket.on('mouseRightClick', mouse.rightClick);
+        logAction('changeLanguageWindows');
+        keyboard.changeLanguageWindows();
+    });
+
+    socket.on('mouseClick', () => {
+
+        logAction('mouseClick');
+        mouse.click();
+    });
+
+    socket.on('mouseDoubleClick', () => {
+
+        logAction('mouseDoubleClick');
+        mouse.doubleClick();
+    });
+
+    socket.on('mouseRightClick', () => {
+
+        logAction('mouseRightClick');
+        mouse.rightClick();
+    });
 
     socket.on('kodi', () => {
         launchApp('C:/Program Files (x86)/Kodi/Kodi.exe');
     });
 
     socket.on('youtube', () => {
-        console.log('youtube');
+        logAction('youtube');
         launchApp(browserPath, 'http://youtube.com');
     });
 
     socket.on('ynet', () => {
+        logAction('ynet');
         launchApp(browserPath, 'http://ynet.co.il');
     });
 });

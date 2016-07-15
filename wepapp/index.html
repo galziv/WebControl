@@ -13,6 +13,18 @@
     <div>
         <textarea id="keyboard-input"  onkeyup="onKeyUp(event);" rows="4"></textarea>
         <div class="row">
+            <div class="pull-left fab-icon inline yellow">
+                <img src="img/doubleMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseDoubleClick')" />
+            </div>
+            <div class="pull-left fab-icon inline yellow">
+                <img src="img/leftMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseClick')" />
+            </div>
+            <div class="pull-left fab-icon inline yellow">
+                <img src="img/rightMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseRightClick')" />
+            </div>
+            <div class="pull-left fab-icon inline yellow">
+                <img src="img/language.png" alt="" class="img-icon" onclick="emit(event, 'changeLanguageWindows')" />
+            </div>
             <div class="no-margin pull-left fab-icon inline yellow small-right">
                 <i class="fa fa-keyboard-o" onclick="keyboardClick(event)"></i>
             </div>
@@ -23,20 +35,9 @@
                 <img src="img/remoteControl.png" alt="" class="img-icon" />
             </div>
             <div class="pull-left fab-icon inline yellow">
-                <img src="img/doubleMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseDoubleClick')" />
+                <img src="img/app.png" alt="" class="img-icon" ng-click="app=!app;media=false;arrows=false;"/>
             </div>
-            <div class="pull-left fab-icon inline yellow">
-                <img src="img/leftMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseClick')"/>
-            </div>
-            <div class="pull-left fab-icon inline yellow">
-                <img src="img/rightMouse.png" alt="" class="img-icon" onclick="emit(event, 'mouseRightClick')" />
-            </div>
-            <div class="pull-left fab-icon inline yellow">
-                <img src="img/language.png" alt="" class="img-icon" onclick="emit(event, 'changeLanguageWindows')" />
-            </div>
-            <div class="pull-left fab-icon inline yellow">
-                <img src="img/app.png" alt="" class="img-icon"  ng-click="app=!app;media=false;arrows=false;" />
-            </div>
+            <div style="clear:both"></div>
         </div>
         <div class="row">
             <div class="background yellow" ng-class="{ open: media}">
