@@ -4,7 +4,7 @@
 
 Simple node.js based website to control your media center. Includes arrow keys, media controls, keyboard (device native keyboard), applications launching and mouse control.
 
-![Screenshot](screenshot.PNG)
+![Screenshot](screenshot.png)
 
 ### Installation
 Install node.js and npm is required. I've developed against node v4.4.7, npm v2.15.8. To check your installed version execute:
