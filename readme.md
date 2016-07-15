@@ -1,4 +1,4 @@
-![GitHub Logo](/webapp/img/chrome.png)
+![Screenshot](webapp/img/chrome.png)
 
 # Web Control
 
