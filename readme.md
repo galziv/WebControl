@@ -4,7 +4,7 @@ Simple node.js based website to control your media center. Includes arrow keys, 
 
 ### Installation
 Install node.js and npm is required. I've developed against node v4.4.7, npm v2.15.8. To check your installed version execute: 
-<code>node -v</code>
+*separate paragraph*<code>node -v</code>
 <code>npm -v</code>
 Download the zip, extract and then go to project directory get all dependencies using:
 <code>npm install</code>
