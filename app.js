@@ -8,6 +8,7 @@ const configuration = JSON.parse(fs.readFileSync('configuration.json', 'utf8'));
 
 const port = configuration.port;
 const browserPath = configuration.browserPath;
+const kodiPath = configuration.kodiPath;
 
 const mouse = require('./mouse');
 const media = require('./media');
@@ -27,8 +28,9 @@ const stripFileName = (path, fileDirectory) => {
 const launchApp = (command, args) => {
 
     console.log(command, args);
-    args = args ? args.split(' ') : null;
-    spawn(command, args);
+	
+		args = args ? args.split(' ') : [''];
+		spawn(command, args);	
 };
 
 const logAction = (action) => {
@@ -118,7 +120,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('kodi', () => {
-        launchApp('C:/Program Files (x86)/Kodi/Kodi.exe');
+        launchApp(kodiPath);
     });
 
     socket.on('youtube', () => {
@@ -133,5 +135,5 @@ io.on('connection', (socket) => {
 });
 
 http.listen(port, () => {
-    console.log('listening on *:3000');
+    console.log(`listening on *:${port}`);
 });

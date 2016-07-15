@@ -1,6 +1,7 @@
 {
   "port": 3000,
   "browserPath": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+  "kodiPath": "C:/Program Files (x86)/Kodi/Kodi.exe",
   "logActions": false,
   "logRequests":  false
 }
