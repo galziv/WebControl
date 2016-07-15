@@ -7,9 +7,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="node_modules/angular/angular.js"></script>
 </head>
-<body class="blue" ontouchmove="moveMouseDelta(event);" ontouchend="touchend(event);" 
-      onclick="emit(event, 'mouseClick')" ondblclick="emit(event, 'mouseDoubleClick')"
-      style="width:100%; height:100%;" ng-app>
+<body class="blue" ng-app>
     <div>
         <textarea id="keyboard-input"  onkeyup="onKeyUp(event);" rows="4"></textarea>
         <div class="row">
@@ -39,7 +37,7 @@
             </div>
             <div style="clear:both"></div>
         </div>
-        <div class="row" id="panels">
+        <div class="row no-margin" id="panels">
             <div class="background yellow no-display" ng-class="{ opened: arrows, closed: arrows === false}">
                 <i class="fa fa-arrow-left" onclick="keyPress(event, 'left');"></i>
                 <i class="fa fa-arrow-right" onclick="keyPress(event, 'right');"></i>
@@ -65,6 +63,7 @@
                 <img src="img/ynet.png" alt="" class="img-icon" onclick="emit(event, 'ynet');" />
             </div>
         </div>
+		<div class="mouse-pad" ontouchmove="moveMouseDelta(event);" ontouchend="touchend(event);" onclick="emit(event, 'mouseClick')" ondblclick="emit(event, 'mouseDoubleClick')"></div>
         <footer>
             <div id="x"></div>
             <div id="y"></div>
