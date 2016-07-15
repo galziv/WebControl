@@ -1,4 +1,4 @@
-![Screenshot](screenshot.PNG)
+![Screenshot](screenshot.png)
 
 # Web Control
 
