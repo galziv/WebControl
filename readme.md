@@ -1,3 +1,5 @@
+![GitHub Logo](/webapp/img/chrome.png)
+
 # Web Control
 
 Simple node.js based website to control your media center. Includes arrow keys, media controls, keyboard (device native keyboard), applications launching and mouse control.
