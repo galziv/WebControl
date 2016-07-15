@@ -45,6 +45,7 @@
                 <i class="fa fa-arrow-down" onclick="keyPress(event, 'down');"></i>
                 <img src="img/enter.png" alt="" class="img-icon text-top" onclick="keyPress(event, 'enter');" />
                 <i class="fa fa-undo" onclick="keyPress(event, 'backspace');"></i>
+				<i class="fa fa-info" onclick="keyPress(event, 'i');"></i>
             </div>
             <div class="background yellow no-display" ng-class="{ opened: media, closed: media === false}">
                 <i class="fa fa-backward" onclick="sendMediaKey(event, 'audio_prev');"></i>
@@ -55,7 +56,6 @@
                 <i class="fa fa-volume-off" onclick="sendMediaKey(event, 'audio_mute');"></i>
                 <i class="fa fa-volume-down" ontouchstart="continuesMediaKey(event, 'audio_vol_down');" ontouchend="stopInterval();"></i>
                 <i class="fa fa-volume-up" ontouchstart="continuesMediaKey(event, 'audio_vol_up');" ontouchend="stopInterval();"></i>
-				<i class="fa fa-info" onclick="keyPress(event, 'i');"></i>
             </div>
             <div class="background yellow no-display" ng-class="{ opened: app, closed: app === false}">
                 <img src="img/kodi.png" alt="" class="img-icon" onclick="emit(event, 'kodi');"/>
